@@ -48,7 +48,20 @@ export const deletePotluck = async (req, res) => {
 
     await PotluckBody.findByIdAndRemove(id);
 
-    console.log('delete')
+    console.log('delete potluck')
+
+    res.json({message: 'post deleted successfully'});
+}
+
+
+export const deleteReply = async (req, res) => {
+    const { potluckId, replyId } = req.params;
+
+    //if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No post with that ID');
+
+    await PotluckBody.filter(potluck => PotluckBody._id === potluckId).findByIdAndRemove(replyId);
+
+    console.log('delete reply')
 
     res.json({message: 'post deleted successfully'});
 }
