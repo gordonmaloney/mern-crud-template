@@ -57,9 +57,10 @@ export const deletePotluck = async (req, res) => {
 export const deleteReply = async (req, res) => {
     const { potluckId, replyId } = req.params;
 
-    //if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No post with that ID');
 
-    await PotluckBody.filter(potluck => PotluckBody._id === potluckId).findByIdAndRemove(replyId);
+    if(!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send('No post with that ID');
+
+    await PotluckBody.filter(potluck => potluck._id === potluckId).findByIdAndRemove(replyId);
 
     console.log('delete reply')
 
