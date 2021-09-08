@@ -8,6 +8,5 @@ router.get('/', getPotlucks);
 router.post('/', createPotluck);
 router.patch('/:id', updatePotluck);
 router.delete('/:id', deletePotluck);
-router.delete('/:potluckid/:replyid', deleteReply);
 
 export default router;
